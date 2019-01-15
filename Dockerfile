@@ -18,4 +18,4 @@ COPY server_files/* /app/minecraft/
 
 EXPOSE 25565
 ENTRYPOINT ["bash"]
-CMD ["/app/minecraft/start.sh","$MEMORY_MAX","$FORGE_VERSION"]
+CMD ["/app/minecraft/start.sh"]
