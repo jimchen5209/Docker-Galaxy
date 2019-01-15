@@ -5,7 +5,7 @@ ENV SPONGE_VERSION 1.12.2-2768-7.1.4
 # Forge Version {Minecraft Version}-{Forge Version} Example => 1.12.2-14.23.5.2768
 ENV FORGE_VERSION 1.12.2-14.23.5.2768
 
-RUN mkdir -p /app/minecraft/mods
+RUN mkdir -p /app/minecraft/mods /app/control
 
 WORKDIR /app/minecraft
 
@@ -15,6 +15,7 @@ ADD https://files.minecraftforge.net/maven/net/minecraftforge/forge/${FORGE_VERS
 RUN java -jar forgeInstaller.jar --installServer
 
 COPY server_files/* /app/minecraft/
+COPY control_files/* /app/control/
 
 EXPOSE 25565
 ENTRYPOINT ["bash"]
