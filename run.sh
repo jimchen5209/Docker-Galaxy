@@ -1,0 +1,1 @@
+docker run --rm -it docker-galaxy --name galaxy-sponge -p 25565:25565
