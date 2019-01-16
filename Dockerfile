@@ -1,4 +1,4 @@
-FROM openjdk:8-jre-slim
+FROM adoptopenjdk/openjdk8-openj9:slim
 
 ENV MEMORY_MAX 1G
 ENV SPONGE_VERSION 1.12.2-2768-7.1.4
