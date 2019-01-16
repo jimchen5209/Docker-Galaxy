@@ -22,7 +22,7 @@ RUN bash /app/control/install.sh
 USER 1000:1000
 
 RUN java -jar forge-${FORGE_VERSION}-installer.jar --installServer && rm forge-${FORGE_VERSION}-installer.jar forge-${FORGE_VERSION}-installer.jar.log
-COPY --chown=1000:1000 server_files/* /app/minecraft/
+COPY --chown=1000:1000 server_files /app/minecraft
 
 EXPOSE 25565
 ENTRYPOINT ["bash"]
