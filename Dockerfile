@@ -9,15 +9,20 @@ RUN mkdir -p /app/minecraft/mods /app/control
 
 WORKDIR /app/minecraft
 
-ADD https://repo.spongepowered.org/maven/org/spongepowered/spongeforge/${SPONGE_VERSION}/spongeforge-${SPONGE_VERSION}.jar /app/minecraft/mods/spongeForge.jar
-ADD https://files.minecraftforge.net/maven/net/minecraftforge/forge/${FORGE_VERSION}/forge-${FORGE_VERSION}-installer.jar /app/minecraft/forgeInstaller.jar
-ADD https://github.com/Tiiffi/mcrcon/releases/download/v0.0.5/mcrcon-0.0.5-linux-x86-64.tar.gz /app/control/mcrcon.tar.gz
+RUN apt-get update && apt-get install -y wget && \
+    wget https://repo.spongepowered.org/maven/org/spongepowered/spongeforge/${SPONGE_VERSION}/spongeforge-${SPONGE_VERSION}.jar -O mods/spongeforge-${SPONGE_VERSION}.jar && \
+    wget https://files.minecraftforge.net/maven/net/minecraftforge/forge/${FORGE_VERSION}/forge-${FORGE_VERSION}-installer.jar && \
+    wget https://github.com/Tiiffi/mcrcon/releases/download/v0.0.5/mcrcon-0.0.5-linux-x86-64.tar.gz -O /app/control/mcrcon.tar.gz && \
+    apt-get purge -y wget && \
+    chown -R 1000:1000 /app/minecraft
 
-COPY server_files/* /app/minecraft/
 COPY control_files/* /app/control/
-
-RUN java -jar forgeInstaller.jar --installServer
 RUN bash /app/control/install.sh
+
+USER 1000
+
+RUN java -jar forge-${FORGE_VERSION}-installer.jar --installServer && rm forge-${FORGE_VERSION}-installer.jar forge-${FORGE_VERSION}-installer.jar.log
+COPY server_files/* /app/minecraft/
 
 EXPOSE 25565
 ENTRYPOINT ["bash"]
