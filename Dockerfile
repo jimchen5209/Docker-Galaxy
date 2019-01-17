@@ -14,7 +14,7 @@ COPY --chown=1000 server_files /app/minecraft
 
 # Download mcrcon
 RUN apt-get update && apt-get install -y wget && \
-    wget -q -O - "https://github.com/Tiiffi/mcrcon/releases/download/v0.0.5/mcrcon-0.0.5-linux-x86-64.tar.gz" | tar xz mcrcon -C /app/control/ && \
+    wget -q -O - "https://github.com/OKTW-Network/mcrcon/releases/download/v0.0.6/mcrcon-0.0.6-linux-x86-64.tar.gz" | tar xz mcrcon -C /app/control/ && \
     apt-get purge -y wget && \
     rm -rf /var/lib/apt/lists/*
 
