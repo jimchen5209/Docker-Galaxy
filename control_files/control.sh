@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 function sendRequest(){
-    /app/control/mcrcon -q -H localhost -p password -P 23456 $@
+    /app/control/mcrcon -s -H localhost -p password -P 23456 $@
 }
 
 function ping(){
