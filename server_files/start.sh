@@ -1,2 +1,2 @@
 cd /app/minecraft/
-java -Xmx$MEMORY_MAX -XX:+UseG1GC -jar forge-$FORGE_VERSION-universal.jar
+java -Xmx$MEMORY_MAX -Xtune:virtualized -Xshareclasses:name=minecraft,cacheDir=/app/javasharedresources,nonfatal -jar forge-$FORGE_VERSION-universal.jar
