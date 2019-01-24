@@ -11,11 +11,18 @@ function stop(){
     sendRequest "stop"
 }
 
+function command(){
+    sendRequest $@
+}
+
 case $1 in
     ping)
         ping
         ;;
     stop)
         stop
+        ;;
+    command)
+        command "${@:2}"
         ;;
 esac
