@@ -1,6 +1,11 @@
 #!/usr/bin/env bash
 function sendRequest(){
-    /app/control/mcrcon -s -H localhost -p password -P 23456 $@
+    /app/control/mcrcon -s -H localhost -p password -P 23456 "$@"
+}
+
+function sendCommand(){
+    command="$@"
+    /app/control/mcrcon -H localhost -p password -P 23456 "$command"
 }
 
 function ping(){
@@ -11,10 +16,6 @@ function stop(){
     sendRequest "stop"
 }
 
-function command(){
-    sendRequest $@
-}
-
 case $1 in
     ping)
         ping
@@ -23,6 +24,6 @@ case $1 in
         stop
         ;;
     command)
-        command "${@:2}"
+        sendCommand "${@:2}"
         ;;
 esac

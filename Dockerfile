@@ -1,6 +1,7 @@
 FROM adoptopenjdk/openjdk8-openj9:slim
 
 # Env setup
+ENV PATH="/app/control:${PATH}"
 ENV MEMORY_MAX 1G
 ENV SPONGE_VERSION 1.12.2-2768-7.1.4
 # Forge Version {Minecraft Version}-{Forge Version} Example => 1.12.2-14.23.5.2768
@@ -13,7 +14,8 @@ COPY control_files/* /app/control/
 COPY --chown=1000 server_files /app/minecraft
 
 # Download mcrcon
-RUN apt-get update && apt-get install -y wget && \
+RUN mv /app/control/control.sh /app/control/control && \
+    apt-get update && apt-get install -y wget && \
     wget -q -O - "https://github.com/OKTW-Network/mcrcon/releases/download/v0.0.6/mcrcon-0.0.6-linux-x86-64.tar.gz" | tar xz -C /app/control/ mcrcon && \
     apt-get purge -y wget && \
     rm -rf /var/lib/apt/lists/*
