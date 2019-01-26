@@ -26,4 +26,7 @@ case $1 in
     command)
         sendCommand "${@:2}"
         ;;
+    *)
+        echo "Not enough arguments!"
+        echo "Usage : control <command/ping/stop> [command]"
 esac
