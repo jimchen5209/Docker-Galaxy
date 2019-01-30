@@ -1,0 +1,8 @@
+ before_script:
+   - docker info
+
+ build_image:
+   script:
+     - docker login -u gitlab-ci-token -p $CI_JOB_TOKEN registry.tipsy.coffee
+     - docker build -t registry.tipsy.coffee/oktw/docker-galaxy:latest .
+     - docker push registry.tipsy.coffee/oktw/docker-galaxy:latest
