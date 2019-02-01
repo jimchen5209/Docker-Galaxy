@@ -10,12 +10,11 @@ ENV FORGE_VERSION 1.12.2-14.23.5.2768
 WORKDIR /app/minecraft
 
 # Copy files
-COPY control_files/* /app/control/
+COPY control_files /app/control
 COPY --chown=1000 server_files /app/minecraft
 
 # Download mcrcon
-RUN mv /app/control/control.sh /app/control/control && \
-    apt-get update && apt-get install -y wget && \
+RUN apt-get update && apt-get install -y wget && \
     wget -q -O - "https://github.com/OKTW-Network/mcrcon/releases/download/v0.0.6/mcrcon-0.0.6-linux-x86-64.tar.gz" | tar xz -C /app/control/ mcrcon && \
     apt-get purge -y wget && \
     rm -rf /var/lib/apt/lists/*
@@ -25,7 +24,7 @@ RUN apt-get update && apt-get install -y wget && \
     wget https://files.minecraftforge.net/maven/net/minecraftforge/forge/${FORGE_VERSION}/forge-${FORGE_VERSION}-installer.jar && \
     java -jar forge-${FORGE_VERSION}-installer.jar --installServer && \
     rm forge-${FORGE_VERSION}-installer.jar forge-${FORGE_VERSION}-installer.jar.log && \
-    chown -R 1000 /app/* && \
+    chown -R 1000 /app/minecraft && \
     apt-get purge -y wget && \
     rm -rf /var/lib/apt/lists/*
 
