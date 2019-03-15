@@ -16,7 +16,7 @@ build-master:
     - docker pull "$CI_REGISTRY_IMAGE" || true
     - docker pull "$CI_REGISTRY_IMAGE:builder" || true
     - docker build --pull --cache-from "$CI_REGISTRY_IMAGE" --cache-from "$CI_REGISTRY_IMAGE:builder" -t "$CI_REGISTRY_IMAGE" .
-    - docker build --pull --cache-from "$CI_REGISTRY_IMAGE:builder" --target downloader -t "$CI_REGISTRY_IMAGE:builder" .
+    - docker build --pull --cache-from "$CI_REGISTRY_IMAGE:builder" --target builder -t "$CI_REGISTRY_IMAGE:builder" .
     - docker push "$CI_REGISTRY_IMAGE"
     - docker push "$CI_REGISTRY_IMAGE:builder"
   only:

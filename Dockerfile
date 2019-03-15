@@ -4,7 +4,7 @@ ARG MCRCON_TAR_FILE=mcrcon-0.0.6-linux-x86-64.tar.gz
 ARG FORGE_VERSION=1.12.2-14.23.5.2768
 ARG SPONGE_VERSION=1.12.2-2768-7.1.4
 
-FROM adoptopenjdk/openjdk8-openj9:alpine-slim as downloader
+FROM adoptopenjdk/openjdk8-openj9:alpine-slim as builder
 ARG MCRCON_VERSION
 ARG MCRCON_TAR_FILE
 ARG FORGE_VERSION
@@ -31,8 +31,8 @@ ENV PATH="/app/control:${PATH}"
 ENV MEMORY_MAX 1G
 ENV FORGE_VERSION ${FORGE_VERSION}
 
-COPY --from=downloader /app/control /app/control
-COPY --from=downloader --chown=1000 /app/minecraft /app/minecraft
+COPY --from=builder /app/control /app/control
+COPY --from=builder --chown=1000 /app/minecraft /app/minecraft
 
 # Run Server
 WORKDIR /app/minecraft
