@@ -1,3 +1,4 @@
+#!/bin/sh
 function sendRequest(){
     /app/control/mcrcon -s -H localhost -p password -P 23456 "$@"
 }
