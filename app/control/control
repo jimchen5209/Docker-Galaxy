@@ -1,4 +1,3 @@
-#!/usr/bin/env bash
 function sendRequest(){
     /app/control/mcrcon -s -H localhost -p password -P 23456 "$@"
 }
