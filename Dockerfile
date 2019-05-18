@@ -9,7 +9,7 @@ ARG FABRIC_INSTALLER
 WORKDIR /app/minecraft
 COPY app /app
 
-RUN apk add --no-cache wget && mkdir -p mods
+RUN apk add --no-cache wget
 # Download mcrcon
 RUN wget --progress=bar:force "https://github.com/OKTW-Network/mcrcon/releases/download/${MCRCON_VERSION}/${MCRCON_TAR_FILE}" -O - | tar xz -C /app/control/ mcrcon
 
@@ -18,6 +18,10 @@ RUN wget --progress=bar:force "https://launcher.mojang.com/v1/objects/d0d0fe2b1d
     java -jar fabric-installer-${FABRIC_INSTALLER}.jar server && \
     java -jar fabric-server-launch.jar --nogui --initSettings && \
     rm fabric-installer-${FABRIC_INSTALLER}.jar
+
+# Download mods
+## Fabric proxy 1.2.0
+RUN wget --progress=bar:force --content-disposition -P mods "https://www.curseforge.com/minecraft/mc-mods/fabricproxy/download/2736863/file"
 
 FROM adoptopenjdk/openjdk12:alpine-jre
 # Env setup
