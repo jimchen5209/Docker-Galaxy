@@ -12,7 +12,7 @@ ARG SPONGE_VERSION
 WORKDIR /app/minecraft
 COPY app /app
 
-RUN apk add --no-cache wget && mkdir mods
+RUN apk add --no-cache wget && mkdir -p mods
 # Download mcrcon
 RUN wget --progress=bar:force "https://github.com/OKTW-Network/mcrcon/releases/download/${MCRCON_VERSION}/${MCRCON_TAR_FILE}" -O - | tar xz -C /app/control/ mcrcon
 # Download Forge
