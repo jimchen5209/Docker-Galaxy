@@ -22,6 +22,8 @@ RUN wget --progress=bar:force "https://launcher.mojang.com/v1/objects/d0d0fe2b1d
 # Download mods
 ## Fabric proxy 1.2.0
 RUN wget --progress=bar:force --content-disposition -P mods "https://www.curseforge.com/minecraft/mc-mods/fabricproxy/download/2736863/file"
+## fabric-language-kotlin 1.3.40+build.1
+RUN wget --progress=bar:force --content-disposition -P mods "https://www.curseforge.com/minecraft/mc-mods/fabric-language-kotlin/download/2726935/file"
 
 FROM adoptopenjdk/openjdk12:alpine-jre
 # Env setup
