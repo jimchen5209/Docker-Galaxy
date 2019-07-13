@@ -29,8 +29,12 @@ FROM adoptopenjdk/openjdk12:alpine-jre
 # Env setup
 ENV PATH="/app/control:${PATH}"
 
+# Copy server files
 COPY --from=builder /app/control /app/control
 COPY --from=builder --chown=1000 /app/minecraft /app/minecraft
+
+# Copy mods
+COPY --chown=1000 mods/* /app/minecraft/mods/
 
 # Run Server
 WORKDIR /app/minecraft
