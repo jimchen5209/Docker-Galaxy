@@ -1,11 +1,13 @@
 ARG MCRCON_VERSION=v0.0.6
 ARG MCRCON_TAR_FILE=mcrcon-0.0.6-linux-x86-64.tar.gz
-ARG FABRIC_INSTALLER=0.5.0.32
+ARG FABRIC_INSTALLER=0.5.0.33
+ARG MINECRAFT_VERSION=1.14.4
 
 FROM adoptopenjdk/openjdk12:alpine-jre as builder
 ARG MCRCON_VERSION
 ARG MCRCON_TAR_FILE
 ARG FABRIC_INSTALLER
+ARG MINECRAFT_VERSION
 WORKDIR /app/minecraft
 COPY app /app
 
@@ -13,9 +15,9 @@ RUN apk add --no-cache wget
 # Download mcrcon
 RUN wget --progress=bar:force "https://github.com/OKTW-Network/mcrcon/releases/download/${MCRCON_VERSION}/${MCRCON_TAR_FILE}" -O - | tar xz -C /app/control/ mcrcon
 
-# Download minecraft server 1.14.3 and install fabric
-RUN wget --progress=bar:force "https://launcher.mojang.com/v1/objects/d0d0fe2b1dc6ab4c65554cb734270872b72dadd6/server.jar" "https://maven.modmuss50.me/net/fabricmc/fabric-installer/${FABRIC_INSTALLER}/fabric-installer-${FABRIC_INSTALLER}.jar" && \
-    java -jar fabric-installer-${FABRIC_INSTALLER}.jar server && \
+# Download minecraft server and install fabric
+RUN wget --progress=bar:force "https://maven.modmuss50.me/net/fabricmc/fabric-installer/${FABRIC_INSTALLER}/fabric-installer-${FABRIC_INSTALLER}.jar" && \
+    java -jar fabric-installer-${FABRIC_INSTALLER}.jar server -snapshot -mcversion ${MINECRAFT_VERSION} -downloadMinecraft && \
     java -jar fabric-server-launch.jar --nogui --initSettings && \
     rm fabric-installer-${FABRIC_INSTALLER}.jar
 
