@@ -17,7 +17,7 @@ RUN wget --progress=bar:force "https://github.com/OKTW-Network/mcrcon/releases/d
 
 # Download minecraft server and install fabric
 RUN wget --progress=bar:force "https://maven.modmuss50.me/net/fabricmc/fabric-installer/${FABRIC_INSTALLER}/fabric-installer-${FABRIC_INSTALLER}.jar" && \
-    java -jar fabric-installer-${FABRIC_INSTALLER}.jar server -snapshot -mcversion ${MINECRAFT_VERSION} -downloadMinecraft && \
+    java -jar fabric-installer-${FABRIC_INSTALLER}.jar server -mcversion ${MINECRAFT_VERSION} -downloadMinecraft && \
     java -jar fabric-server-launch.jar --nogui --initSettings && \
     rm fabric-installer-${FABRIC_INSTALLER}.jar
 
