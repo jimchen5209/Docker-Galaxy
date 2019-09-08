@@ -42,4 +42,4 @@ COPY --chown=1000 mods/* /app/minecraft/mods/
 WORKDIR /app/minecraft
 USER 1000
 EXPOSE 25565
-CMD ["java", "-XX:MinRAMPercentage=25", "-XX:MaxRAMPercentage=75", "-XX:+UnlockExperimentalVMOptions", "-XX:+UseShenandoahGC", "-XX:ShenandoahUncommitDelay=30000", "-XX:ShenandoahGuaranteedGCInterval=60000", "-XX:+AlwaysPreTouch", "-XX:+UseTransparentHugePages", "-jar", "fabric-server-launch.jar"]
+CMD ["java", "-XX:MinRAMPercentage=25", "-XX:MaxRAMPercentage=75", "-XX:+UnlockExperimentalVMOptions", "-XX:+UseShenandoahGC", "-XX:ShenandoahUncommitDelay=30000", "-XX:ShenandoahGuaranteedGCInterval=60000", "-XX:+UseTransparentHugePages", "-jar", "fabric-server-launch.jar"]
