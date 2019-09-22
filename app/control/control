@@ -9,7 +9,7 @@ function sendCommand(){
 }
 
 function ping(){
-    sendRequest "sponge version"
+    sendRequest "list"
 }
 
 function stop(){
