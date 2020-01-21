@@ -1,7 +1,7 @@
 ARG MCRCON_VERSION=v0.0.6
 ARG MCRCON_TAR_FILE=mcrcon-0.0.6-linux-x86-64.tar.gz
-ARG FABRIC_INSTALLER=0.5.0.33
-ARG MINECRAFT_VERSION=1.14.4
+ARG FABRIC_INSTALLER=0.5.2.39
+ARG MINECRAFT_VERSION=1.15.1
 
 FROM adoptopenjdk/openjdk13-openj9:alpine-jre as builder
 ARG MCRCON_VERSION
@@ -22,10 +22,10 @@ RUN wget --progress=bar:force "https://maven.modmuss50.me/net/fabricmc/fabric-in
     rm fabric-installer-${FABRIC_INSTALLER}.jar
 
 # Download mods
-## Fabric proxy 1.2.0
-RUN wget --progress=bar:force --content-disposition -P mods "https://edge.forgecdn.net/files/2736/863/FabricProxy-1.2.0.jar"
-## fabric-language-kotlin 1.3.40+build.1
-RUN wget --progress=bar:force --content-disposition -P mods "https://edge.forgecdn.net/files/2726/935/fabric-language-kotlin-1.3.40+build.1.jar"
+## Fabric proxy 1.3.0
+RUN wget --progress=bar:force --content-disposition -P mods "https://edge.forgecdn.net/files/2845/701/FabricProxy-1.3.0.jar"
+## fabric-language-kotlin 1.3.61+build.1
+RUN wget --progress=bar:force --content-disposition -P mods "https://edge.forgecdn.net/files/2843/142/fabric-language-kotlin-1.3.61+build.1.jar"
 
 FROM adoptopenjdk/openjdk13-openj9:alpine-jre
 # Env setup
