@@ -26,6 +26,10 @@ RUN wget --progress=bar:force "https://maven.modmuss50.me/net/fabricmc/fabric-in
 RUN wget --progress=bar:force --content-disposition -P mods "https://edge.forgecdn.net/files/2845/701/FabricProxy-1.3.0.jar"
 ## fabric-language-kotlin 1.3.61+build.2
 RUN wget --progress=bar:force --content-disposition -P mods "https://edge.forgecdn.net/files/2854/324/fabric-language-kotlin-1.3.61+build.2.jar"
+## phosphor
+RUN wget --progress=bar:force --content-disposition -P mods "https://edge.forgecdn.net/files/2918/761/phosphor-fabric-mc1.15.2-0.5.2+build.6.jar"
+## lithium
+RUN wget --progress=bar:force --content-disposition -P mods "https://edge.forgecdn.net/files/2904/300/lithium-mc1.15.2-fabric-0.4.6-mod.jar"
 
 FROM adoptopenjdk/openjdk13-openj9:alpine-jre
 # Env setup
