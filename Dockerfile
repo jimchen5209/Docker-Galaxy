@@ -3,7 +3,7 @@ ARG MCRCON_TAR_FILE=mcrcon-0.0.6-linux-x86-64.tar.gz
 ARG FABRIC_INSTALLER=0.5.2.39
 ARG MINECRAFT_VERSION=1.15.2
 
-FROM adoptopenjdk/openjdk13-openj9:alpine-jre as builder
+FROM adoptopenjdk/openjdk14:alpine-jre as builder
 ARG MCRCON_VERSION
 ARG MCRCON_TAR_FILE
 ARG FABRIC_INSTALLER
@@ -31,7 +31,7 @@ RUN wget --progress=bar:force --content-disposition -P mods "https://edge.forgec
 ## lithium
 RUN wget --progress=bar:force --content-disposition -P mods "https://edge.forgecdn.net/files/2904/300/lithium-mc1.15.2-fabric-0.4.6-mod.jar"
 
-FROM adoptopenjdk/openjdk13-openj9:alpine-jre
+FROM adoptopenjdk/openjdk14:alpine-jre
 # Env setup
 ENV PATH="/app/control:${PATH}"
 
@@ -46,4 +46,4 @@ COPY --chown=1000 mods/* /app/minecraft/mods/
 WORKDIR /app/minecraft
 USER 1000
 EXPOSE 25565
-CMD ["java", "-XX:MaxRAMPercentage=80", "-Xgc:concurrentScavenge", "-XX:IdleTuningMinIdleWaitTime=30", "-Xaggressive", "-XX:+CompactStrings", "-jar", "fabric-server-launch.jar"]
+CMD ["java", "-XX:MaxRAMPercentage=80", "-XX:+UnlockExperimentalVMOptions", "-XX:+UseShenandoahGC", "-XX:ShenandoahGuaranteedGCInterval=30000", "-XX:ShenandoahUncommitDelay=0", "-jar", "fabric-server-launch.jar"]
