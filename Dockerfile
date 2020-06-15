@@ -11,7 +11,7 @@ ARG MINECRAFT_VERSION
 WORKDIR /app/minecraft
 COPY app /app
 
-RUN apk add --no-cache wget
+RUN apk add --no-cache wget ca-certificates
 # Download mcrcon
 RUN wget --progress=bar:force "https://github.com/OKTW-Network/mcrcon/releases/download/${MCRCON_VERSION}/${MCRCON_TAR_FILE}" -O - | tar xz -C /app/control/ mcrcon
 
@@ -34,6 +34,8 @@ RUN wget --progress=bar:force --content-disposition -P mods "https://edge.forgec
 FROM adoptopenjdk/openjdk14:alpine-jre
 # Env setup
 ENV PATH="/app/control:${PATH}"
+
+RUN apk add --no-cache ca-certificates
 
 # Copy server files
 COPY --from=builder /app/control /app/control
