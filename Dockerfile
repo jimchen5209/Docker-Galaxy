@@ -22,10 +22,10 @@ RUN wget --progress=bar:force "https://maven.fabricmc.net/net/fabricmc/fabric-in
     rm fabric-installer-${FABRIC_INSTALLER}.jar
 
 # Download mods
+## Fabric API
+RUN wget --progress=bar:force --content-disposition -P mods "https://edge.forgecdn.net/files/2985/289/fabric-api-0.13.1+build.370-1.16.jar"
 ## Fabric proxy
 RUN wget --progress=bar:force --content-disposition -P mods "https://14-183889556-gh.circle-artifacts.com/0/FabricProxy-1.3.3.jar"
-## fabric-language-kotlin
-#RUN wget --progress=bar:force --content-disposition -P mods "https://edge.forgecdn.net/files/2924/213/fabric-language-kotlin-1.3.71+build.1.jar"
 ## phosphor
 #RUN wget --progress=bar:force --content-disposition -P mods "https://edge.forgecdn.net/files/2918/761/phosphor-fabric-mc1.15.2-0.5.2+build.6.jar"
 ## lithium
