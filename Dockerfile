@@ -25,7 +25,7 @@ RUN wget --progress=bar:force "https://maven.fabricmc.net/net/fabricmc/fabric-in
 ## Fabric API
 RUN wget --progress=bar:force --content-disposition -P mods "https://edge.forgecdn.net/files/2985/289/fabric-api-0.13.1+build.370-1.16.jar"
 ## Fabric proxy
-RUN wget --progress=bar:force --content-disposition -P mods "https://14-183889556-gh.circle-artifacts.com/0/FabricProxy-1.3.3.jar"
+RUN wget --progress=bar:force --content-disposition -P mods "https://edge.forgecdn.net/files/2987/321/FabricProxy-1.3.3.jar"
 ## phosphor
 #RUN wget --progress=bar:force --content-disposition -P mods "https://edge.forgecdn.net/files/2918/761/phosphor-fabric-mc1.15.2-0.5.2+build.6.jar"
 ## lithium
