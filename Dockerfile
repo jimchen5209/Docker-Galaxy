@@ -27,9 +27,9 @@ RUN wget --progress=bar:force --content-disposition -P mods "https://edge.forgec
 ## Fabric proxy
 RUN wget --progress=bar:force --content-disposition -P mods "https://edge.forgecdn.net/files/2987/321/FabricProxy-1.3.3.jar"
 ## phosphor
-#RUN wget --progress=bar:force --content-disposition -P mods "https://edge.forgecdn.net/files/2918/761/phosphor-fabric-mc1.15.2-0.5.2+build.6.jar"
+RUN wget --progress=bar:force --content-disposition -P mods "https://edge.forgecdn.net/files/2987/621/phosphor-fabric-mc1.16.1-0.6.0+build.7.jar"
 ## lithium
-#RUN wget --progress=bar:force --content-disposition -P mods "https://edge.forgecdn.net/files/2904/300/lithium-mc1.15.2-fabric-0.4.6-mod.jar"
+RUN wget --progress=bar:force --content-disposition -P mods "https://edge.forgecdn.net/files/2987/754/lithium-fabric-mc1.16.1-0.5.0-rc1.jar"
 
 FROM adoptopenjdk/openjdk14:alpine-jre
 # Env setup
