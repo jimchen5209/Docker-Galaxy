@@ -27,7 +27,7 @@ RUN wget --progress=bar:force --content-disposition -P mods "https://edge.forgec
 ## phosphor
 RUN wget --progress=bar:force --content-disposition -P mods "https://edge.forgecdn.net/files/2987/621/phosphor-fabric-mc1.16.1-0.6.0+build.7.jar"
 ## lithium
-RUN wget --progress=bar:force --content-disposition -P mods "https://edge.forgecdn.net/files/3000/628/lithium-fabric-mc1.16.1-0.5.1.jar"
+#RUN wget --progress=bar:force --content-disposition -P mods "https://edge.forgecdn.net/files/3000/628/lithium-fabric-mc1.16.1-0.5.1.jar"
 ## Fabric API
 RUN wget --progress=bar:force --content-disposition -P mods "https://edge.forgecdn.net/files/3029/510/fabric-api-0.17.2+build.396-1.16.jar"
 ## Spark
