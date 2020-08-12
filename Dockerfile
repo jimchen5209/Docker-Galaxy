@@ -22,14 +22,14 @@ RUN wget --progress=bar:force "https://maven.fabricmc.net/net/fabricmc/fabric-in
     rm fabric-installer-${FABRIC_INSTALLER}.jar
 
 # Download mods
-## Fabric API
-RUN wget --progress=bar:force --content-disposition -P mods "https://edge.forgecdn.net/files/3029/510/fabric-api-0.17.2+build.396-1.16.jar"
 ## Fabric proxy
 RUN wget --progress=bar:force --content-disposition -P mods "https://edge.forgecdn.net/files/2987/321/FabricProxy-1.3.3.jar"
 ## phosphor
 RUN wget --progress=bar:force --content-disposition -P mods "https://edge.forgecdn.net/files/2987/621/phosphor-fabric-mc1.16.1-0.6.0+build.7.jar"
 ## lithium
 RUN wget --progress=bar:force --content-disposition -P mods "https://edge.forgecdn.net/files/3000/628/lithium-fabric-mc1.16.1-0.5.1.jar"
+## Fabric API
+RUN wget --progress=bar:force --content-disposition -P mods "https://edge.forgecdn.net/files/3029/510/fabric-api-0.17.2+build.396-1.16.jar"
 
 FROM adoptopenjdk/openjdk14:alpine-jre
 # Env setup
