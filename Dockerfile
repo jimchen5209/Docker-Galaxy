@@ -1,9 +1,9 @@
 ARG MCRCON_VERSION=v0.0.6
 ARG MCRCON_TAR_FILE=mcrcon-0.0.6-linux-x86-64.tar.gz
-ARG FABRIC_INSTALLER=0.6.1.45
-ARG MINECRAFT_VERSION=1.16.2
+ARG FABRIC_INSTALLER=0.6.1.51
+ARG MINECRAFT_VERSION=1.16.4
 
-FROM adoptopenjdk/openjdk14:alpine-jre as builder
+FROM adoptopenjdk/openjdk15:alpine-jre as builder
 ARG MCRCON_VERSION
 ARG MCRCON_TAR_FILE
 ARG FABRIC_INSTALLER
@@ -27,13 +27,13 @@ RUN wget --progress=bar:force --content-disposition -P mods "https://edge.forgec
 ## phosphor
 RUN wget --progress=bar:force --content-disposition -P mods "https://edge.forgecdn.net/files/2987/621/phosphor-fabric-mc1.16.1-0.6.0+build.7.jar"
 ## lithium
-#RUN wget --progress=bar:force --content-disposition -P mods "https://edge.forgecdn.net/files/3000/628/lithium-fabric-mc1.16.1-0.5.1.jar"
+RUN wget --progress=bar:force --content-disposition -P mods "https://edge.forgecdn.net/files/3063/230/lithium-fabric-mc1.16.3-0.5.6.jar"
 ## Fabric API
-RUN wget --progress=bar:force --content-disposition -P mods "https://edge.forgecdn.net/files/3029/510/fabric-api-0.17.2+build.396-1.16.jar"
+RUN wget --progress=bar:force --content-disposition -P mods "https://edge.forgecdn.net/files/3105/73/fabric-api-0.25.4+1.16.jar"
 ## Spark
-RUN wget --progress=bar:force --content-disposition -P mods "https://ci.lucko.me/job/spark/146/artifact/spark-fabric/build/libs/spark-fabric.jar"
+RUN wget --progress=bar:force --content-disposition -P mods "https://ci.lucko.me/job/spark/154/artifact/spark-fabric/build/libs/spark-fabric.jar"
 
-FROM adoptopenjdk/openjdk14:alpine-jre
+FROM adoptopenjdk/openjdk15:alpine-jre
 # Env setup
 ENV PATH="/app/control:${PATH}"
 
