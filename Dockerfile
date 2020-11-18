@@ -23,13 +23,13 @@ RUN wget --progress=bar:force "https://maven.fabricmc.net/net/fabricmc/fabric-in
 
 # Download mods
 ## Fabric proxy
-RUN wget --progress=bar:force --content-disposition -P mods "https://edge.forgecdn.net/files/2987/321/FabricProxy-1.3.3.jar"
+RUN wget --progress=bar:force --content-disposition -P mods "https://edge.forgecdn.net/files/3110/644/FabricProxy-1.4.0.jar"
 ## phosphor
 RUN wget --progress=bar:force --content-disposition -P mods "https://edge.forgecdn.net/files/2987/621/phosphor-fabric-mc1.16.1-0.6.0+build.7.jar"
 ## lithium
-#RUN wget --progress=bar:force --content-disposition -P mods "https://edge.forgecdn.net/files/3063/230/lithium-fabric-mc1.16.3-0.5.6.jar"
+RUN wget --progress=bar:force --content-disposition -P mods "https://edge.forgecdn.net/files/3107/909/lithium-fabric-mc1.16.4-0.6.0.jar"
 ## Fabric API
-RUN wget --progress=bar:force --content-disposition -P mods "https://edge.forgecdn.net/files/3105/73/fabric-api-0.25.4+1.16.jar"
+RUN wget --progress=bar:force --content-disposition -P mods "https://edge.forgecdn.net/files/3110/711/fabric-api-0.25.7+1.16.jar"
 ## Spark
 RUN wget --progress=bar:force --content-disposition -P mods "https://ci.lucko.me/job/spark/154/artifact/spark-fabric/build/libs/spark-fabric.jar"
 

@@ -1,32 +1,40 @@
-#!/bin/sh
-function sendRequest(){
+#!/bin/ash
+sendRequest() {
     /app/control/mcrcon -s -H localhost -p password -P 23456 "$@"
 }
 
-function sendCommand(){
-    command="$@"
+sendCommand() {
+    command="$*"
     /app/control/mcrcon -H localhost -p password -P 23456 "$command"
 }
 
-function ping(){
+op() {
+    sendCommand "op $*"
+}
+
+ping() {
     sendRequest "list"
 }
 
-function stop(){
+stop() {
     sendRequest "stop"
 }
 
 case $1 in
-    ping)
-        ping
-        ;;
-    stop)
-        stop
-        ;;
-    command)
-        sendCommand "${@:8}"
-        ;;
-    *)
-        echo "Not enough arguments!"
-        echo "Usage : control <command/ping/stop> [command]"
+ping)
+    ping
+    ;;
+stop)
+    stop
+    ;;
+op)
+    op "${@:3}"
+    ;;
+command)
+    sendCommand "${@:8}"
+    ;;
+*)
+    echo "Not enough arguments!"
+    echo "Usage : control <command/op/ping/stop> [command/username]"
+    ;;
 esac
