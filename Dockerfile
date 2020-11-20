@@ -31,7 +31,7 @@ RUN wget --progress=bar:force --content-disposition -P mods "https://edge.forgec
 ## Fabric API
 RUN wget --progress=bar:force --content-disposition -P mods "https://edge.forgecdn.net/files/3110/711/fabric-api-0.25.7+1.16.jar"
 ## Spark
-RUN wget --progress=bar:force --content-disposition -P mods "https://ci.lucko.me/job/spark/154/artifact/spark-fabric/build/libs/spark-fabric.jar"
+RUN wget --progress=bar:force --content-disposition -P mods "https://ci.lucko.me/job/spark/155/artifact/spark-fabric/build/libs/spark-fabric.jar"
 
 FROM adoptopenjdk/openjdk15:alpine-jre
 # Env setup
