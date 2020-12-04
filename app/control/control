@@ -1,6 +1,6 @@
 #!/bin/ash
 sendRequest() {
-    /app/control/mcrcon -s -H localhost -p password -P 23456 "$@"
+    timeout 1 /app/control/mcrcon -s -H localhost -p password -P 23456 "$@"
 }
 
 sendCommand() {
