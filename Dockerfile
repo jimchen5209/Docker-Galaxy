@@ -22,16 +22,20 @@ RUN wget --progress=bar:force "https://maven.fabricmc.net/net/fabricmc/fabric-in
     rm fabric-installer-${FABRIC_INSTALLER}.jar
 
 # Download mods
+## LazyDFU
+RUN wget --progress=bar:force --content-disposition -P mods "https://cdn.modrinth.com/data/hvFnDODi/versions/0.1.0/lazydfu-0.1.0.jar"
+## Krypton
+RUN wget --progress=bar:force --content-disposition -P mods "https://cdn.modrinth.com/data/fQEb0iXm/versions/0.1.0/krypton-0.1.0.jar"
 ## Fabric proxy
-RUN wget --progress=bar:force --content-disposition -P mods "https://edge.forgecdn.net/files/3110/644/FabricProxy-1.4.0.jar"
+RUN wget --progress=bar:force --content-disposition -P mods "https://cdn.modrinth.com/data/GA1t7H08/versions/v1.4.5/FabricProxy-1.4.5.jar"
 ## phosphor
-RUN wget --progress=bar:force --content-disposition -P mods "https://edge.forgecdn.net/files/2987/621/phosphor-fabric-mc1.16.1-0.6.0+build.7.jar"
+RUN wget --progress=bar:force --content-disposition -P mods "https://cdn.modrinth.com/data/hEOCdOgW/versions/mc1.16.3-0.7.0/phosphor-fabric-mc1.16.3-0.7.0+build.10.jar"
 ## lithium
-RUN wget --progress=bar:force --content-disposition -P mods "https://edge.forgecdn.net/files/3107/909/lithium-fabric-mc1.16.4-0.6.0.jar"
+RUN wget --progress=bar:force --content-disposition -P mods "https://cdn.modrinth.com/data/gvQqBUqZ/versions/mc1.16.4-0.6.0/lithium-fabric-mc1.16.4-0.6.0.jar"
 ## Fabric API
-RUN wget --progress=bar:force --content-disposition -P mods "https://edge.forgecdn.net/files/3110/711/fabric-api-0.25.7+1.16.jar"
+RUN wget --progress=bar:force --content-disposition -P mods "https://edge.forgecdn.net/files/3159/126/fabric-api-0.29.3+1.16.jar"
 ## Spark
-RUN wget --progress=bar:force --content-disposition -P mods "https://ci.lucko.me/job/spark/155/artifact/spark-fabric/build/libs/spark-fabric.jar"
+RUN wget --progress=bar:force --content-disposition -P mods "https://ci.lucko.me/job/spark/159/artifact/spark-fabric/build/libs/spark-fabric.jar"
 
 FROM adoptopenjdk/openjdk15:alpine-jre
 # Env setup
