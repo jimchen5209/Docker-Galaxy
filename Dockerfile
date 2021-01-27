@@ -27,7 +27,7 @@ RUN wget --progress=bar:force --content-disposition -P mods "https://cdn.modrint
 ## Krypton
 RUN wget --progress=bar:force --content-disposition -P mods "https://cdn.modrinth.com/data/fQEb0iXm/versions/0.1.1/krypton-0.1.1.jar"
 ## Fabric proxy
-RUN wget --progress=bar:force --content-disposition -P mods "https://github.com/OKTW-Network/FabricProxy-Lite/releases/download/v1.0.0/FabricProxy-Lite-1.0.0.jar"
+RUN wget --progress=bar:force --content-disposition -P mods "https://github.com/OKTW-Network/FabricProxy-Lite/releases/download/v1.0.1/FabricProxy-Lite-1.0.1.jar"
 ## phosphor
 RUN wget --progress=bar:force --content-disposition -P mods "https://cdn.modrinth.com/data/hEOCdOgW/versions/mc1.16.3-0.7.0/phosphor-fabric-mc1.16.3-0.7.0+build.10.jar"
 ## lithium
