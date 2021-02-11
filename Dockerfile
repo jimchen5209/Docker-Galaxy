@@ -27,17 +27,17 @@ RUN wget --progress=bar:force --content-disposition -P mods "https://cdn.modrint
 ## Krypton
 RUN wget --progress=bar:force --content-disposition -P mods "https://cdn.modrinth.com/data/fQEb0iXm/versions/0.1.1/krypton-0.1.1.jar"
 ## Fabric proxy
-RUN wget --progress=bar:force --content-disposition -P mods "https://github.com/OKTW-Network/FabricProxy-Lite/releases/download/v1.0.1/FabricProxy-Lite-1.0.1.jar"
+RUN wget --progress=bar:force --content-disposition -P mods "https://cdn.modrinth.com/data/8dI2tmqs/versions/v1.1.0/FabricProxy-Lite-1.1.0.jar"
 ## phosphor
 RUN wget --progress=bar:force --content-disposition -P mods "https://cdn.modrinth.com/data/hEOCdOgW/versions/mc1.16.3-0.7.0/phosphor-fabric-mc1.16.3-0.7.0+build.10.jar"
 ## lithium
-RUN wget --progress=bar:force --content-disposition -P mods "https://edge.forgecdn.net/files/3179/373/lithium-fabric-mc1.16.5-0.6.1.jar"
+RUN wget --progress=bar:force --content-disposition -P mods "https://cdn.modrinth.com/data/gvQqBUqZ/versions/mc1.16.5-0.6.3/lithium-fabric-mc1.16.5-0.6.3.jar"
 ## Fabric API
-RUN wget --progress=bar:force --content-disposition -P mods "https://cdn.modrinth.com/data/P7dR8mSH/versions/0.29.4+1.16/fabric-api-0.29.4%2B1.16.jar"
+RUN wget --progress=bar:force --content-disposition -P mods "https://cdn.modrinth.com/data/P7dR8mSH/versions/0.30.0+1.16/fabric-api-0.30.0+1.16.jar"
 ## Spark
 RUN wget --progress=bar:force --content-disposition -P mods "https://ci.lucko.me/job/spark/lastSuccessfulBuild/artifact/spark-fabric/build/libs/spark-fabric.jar"
 ## Hydrogen
-RUN wget --progress=bar:force --content-disposition -P mods "https://github.com/jellysquid3/hydrogen-fabric/releases/download/mc1.16.5-v0.2.0/hydrogen-fabric-mc1.16.5-0.2.jar"
+RUN wget --progress=bar:force --content-disposition -P mods "https://cdn.modrinth.com/data/AZomiSrC/versions/mc1.16.5-v0.2.0/hydrogen-fabric-mc1.16.5-0.2.jar"
 
 FROM adoptopenjdk/openjdk15:alpine-jre
 # Env setup
