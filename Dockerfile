@@ -3,7 +3,7 @@ ARG MCRCON_TAR_FILE=mcrcon-0.0.6-linux-x86-64.tar.gz
 ARG FABRIC_INSTALLER=0.7.3
 ARG MINECRAFT_VERSION=1.16.5
 
-FROM adoptopenjdk/openjdk16:alpine-jre as builder
+FROM adoptopenjdk/openjdk16:debianslim-jre as builder
 ARG MCRCON_VERSION
 ARG MCRCON_TAR_FILE
 ARG FABRIC_INSTALLER
@@ -11,7 +11,7 @@ ARG MINECRAFT_VERSION
 WORKDIR /app/minecraft
 COPY app /app
 
-RUN apk add --no-cache wget ca-certificates
+RUN apt update && apt install wget ca-certificates
 # Download mcrcon
 RUN wget --progress=bar:force "https://github.com/OKTW-Network/mcrcon/releases/download/${MCRCON_VERSION}/${MCRCON_TAR_FILE}" -O - | tar xz -C /app/control/ mcrcon
 
@@ -39,11 +39,11 @@ RUN wget --progress=bar:force --content-disposition -P mods "https://ci.lucko.me
 ## Hydrogen
 #RUN wget --progress=bar:force --content-disposition -P mods "https://cdn.modrinth.com/data/AZomiSrC/versions/mc1.16.5-v0.2.0/hydrogen-fabric-mc1.16.5-0.2.jar"
 
-FROM adoptopenjdk/openjdk16:alpine-jre
+FROM adoptopenjdk/openjdk16:debianslim-jre
 # Env setup
 ENV PATH="/app/control:${PATH}"
 
-RUN apk add --no-cache ca-certificates
+RUN apt update && apt install ca-certificates
 
 # Copy server files
 COPY --from=builder /app/control /app/control
