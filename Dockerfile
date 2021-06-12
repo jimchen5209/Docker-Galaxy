@@ -25,7 +25,7 @@ RUN wget --progress=bar:force "https://maven.fabricmc.net/net/fabricmc/fabric-in
 ## LazyDFU
 RUN wget --progress=bar:force --content-disposition -P mods "https://cdn.modrinth.com/data/hvFnDODi/versions/0.1.2/lazydfu-0.1.2.jar"
 ## Krypton
-RUN wget --progress=bar:force --content-disposition -P mods "https://ci.velocitypowered.com/job/krypton/60/artifact/build/libs/krypton-0.1.3-SNAPSHOT.jar"
+RUN wget --progress=bar:force --content-disposition -P mods "https://cdn.modrinth.com/data/fQEb0iXm/versions/0.1.3/krypton-0.1.3.jar"
 ## Fabric proxy
 RUN wget --progress=bar:force --content-disposition -P mods "https://cdn.modrinth.com/data/8dI2tmqs/versions/v1.1.4/FabricProxy-Lite-1.1.4.jar"
 ## phosphor
