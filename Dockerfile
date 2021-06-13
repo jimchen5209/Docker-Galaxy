@@ -49,8 +49,9 @@ RUN apt update && apt install ca-certificates
 COPY --from=builder /app/control /app/control
 COPY --from=builder --chown=1000 /app/minecraft /app/minecraft
 
-# Copy mods
+# Copy files
 COPY --chown=1000 mods/* /app/minecraft/mods/
+COPY --chown=1000 config/* /app/minecraft/config/
 
 # Run Server
 WORKDIR /app/minecraft
