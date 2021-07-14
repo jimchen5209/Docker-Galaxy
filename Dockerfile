@@ -33,11 +33,11 @@ RUN wget --progress=bar:force --content-disposition -P mods "https://cdn.modrint
 ## lithium
 RUN wget --progress=bar:force --content-disposition -P mods "https://cdn.modrinth.com/data/gvQqBUqZ/versions/mc1.17.1-0.7.3/lithium-fabric-mc1.17.1-0.7.3.jar"
 ## Fabric API
-RUN wget --progress=bar:force --content-disposition -P mods "https://media.forgecdn.net/files/3377/591/fabric-api-0.36.1%2B1.17.jar"
+RUN wget --progress=bar:force --content-disposition -P mods "https://media.forgecdn.net/files/3386/484/fabric-api-0.37.0%2B1.17.jar"
 ## Spark
 RUN wget --progress=bar:force --content-disposition -P mods "https://ci.lucko.me/job/spark/lastSuccessfulBuild/artifact/spark-fabric/build/libs/spark-fabric.jar"
 ## Hydrogen
-#RUN wget --progress=bar:force --content-disposition -P mods "https://cdn.modrinth.com/data/AZomiSrC/versions/mc1.17-v0.3.0/hydrogen-fabric-mc1.17-0.3.jar"
+RUN wget --progress=bar:force --content-disposition -P mods "https://cdn.modrinth.com/data/AZomiSrC/versions/mc1.17-v0.3.0/hydrogen-fabric-mc1.17-0.3.jar"
 
 FROM adoptopenjdk/openjdk16:debianslim-jre
 # Env setup
