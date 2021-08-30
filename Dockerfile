@@ -3,7 +3,7 @@ ARG MCRCON_TAR_FILE=mcrcon-0.0.6-linux-x86-64.tar.gz
 ARG FABRIC_INSTALLER=0.7.4
 ARG MINECRAFT_VERSION=1.17.1
 
-FROM adoptopenjdk/openjdk16:debianslim-jre as builder
+FROM adoptopenjdk/openjdk16-openj9:debianslim-jre as builder
 ARG MCRCON_VERSION
 ARG MCRCON_TAR_FILE
 ARG FABRIC_INSTALLER
@@ -29,17 +29,17 @@ RUN wget --progress=bar:force --content-disposition -P mods "https://cdn.modrint
 ## Fabric proxy
 RUN wget --progress=bar:force --content-disposition -P mods "https://cdn.modrinth.com/data/8dI2tmqs/versions/v1.1.5/FabricProxy-Lite-1.1.5.jar"
 ## Starlight
-RUN wget --progress=bar:force --content-disposition -P mods "https://github.com/Tuinity/Starlight/releases/download/1.0.0-RC3/starlight-1.0.0-RC3+fabric.1.17.x.jar"
+RUN wget --progress=bar:force --content-disposition -P mods "https://cdn.modrinth.com/data/H8CaAYZC/versions/Starlight%201.0.0%201.17.x/starlight-1.0.0+fabric.73f6d37.jar"
 ## lithium
-RUN wget --progress=bar:force --content-disposition -P mods "https://cdn.modrinth.com/data/gvQqBUqZ/versions/mc1.17.1-0.7.3/lithium-fabric-mc1.17.1-0.7.3.jar"
+RUN wget --progress=bar:force --content-disposition -P mods "https://cdn.modrinth.com/data/gvQqBUqZ/versions/mc1.17.1-0.7.4/lithium-fabric-mc1.17.1-0.7.4.jar"
 ## Fabric API
-RUN wget --progress=bar:force --content-disposition -P mods "https://media.forgecdn.net/files/3386/484/fabric-api-0.37.0%2B1.17.jar"
+RUN wget --progress=bar:force --content-disposition -P mods "https://cdn.modrinth.com/data/P7dR8mSH/versions/0.39.2+1.17/fabric-api-0.39.2+1.17.jar"
 ## Spark
 RUN wget --progress=bar:force --content-disposition -P mods "https://ci.lucko.me/job/spark/lastSuccessfulBuild/artifact/spark-fabric/build/libs/spark-fabric.jar"
 ## Hydrogen
 RUN wget --progress=bar:force --content-disposition -P mods "https://cdn.modrinth.com/data/AZomiSrC/versions/mc1.17.1-0.3.1/hydrogen-fabric-mc1.17.1-0.3.jar"
 
-FROM adoptopenjdk/openjdk16:debianslim-jre
+FROM adoptopenjdk/openjdk16-openj9:debianslim-jre
 # Env setup
 ENV PATH="/app/control:${PATH}"
 
@@ -56,4 +56,4 @@ COPY --chown=1000 mods/* /app/minecraft/mods/
 WORKDIR /app/minecraft
 USER 1000
 EXPOSE 25565
-CMD ["java", "-XX:MaxRAMPercentage=80", "-XX:+UnlockExperimentalVMOptions", "-XX:+UseShenandoahGC", "-XX:ShenandoahGuaranteedGCInterval=30000", "-XX:ShenandoahUncommitDelay=5000", "-jar", "fabric-server-launch.jar"]
+CMD ["java", "-XX:MaxRAMPercentage=80", "-Xaggressive", "-Xalwaysclassgc", "-Xgc:concurrentScavenge", "-jar", "fabric-server-launch.jar"]
