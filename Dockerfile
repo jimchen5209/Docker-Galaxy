@@ -56,4 +56,4 @@ COPY --chown=1000 mods/* /app/minecraft/mods/
 WORKDIR /app/minecraft
 USER 1000
 EXPOSE 25565
-CMD ["java", "-XX:MaxRAMPercentage=80", "-Xaggressive", "-Xalwaysclassgc", "-Xgc:concurrentScavenge", "-jar", "fabric-server-launch.jar"]
+CMD ["java", "-XX:MaxRAMPercentage=95", "-Xaggressive", "-Xalwaysclassgc", "-Xgc:concurrentScavenge", "-Xdump:none", "-jar", "fabric-server-launch.jar"]
