@@ -3,7 +3,7 @@ ARG MCRCON_TAR_FILE=mcrcon-0.0.6-linux-x86-64.tar.gz
 ARG FABRIC_INSTALLER=0.7.4
 ARG MINECRAFT_VERSION=1.17.1
 
-FROM adoptopenjdk/openjdk16-openj9:debianslim-jre as builder
+FROM ibm-semeru-runtimes:open-16-jre-focal as builder
 ARG MCRCON_VERSION
 ARG MCRCON_TAR_FILE
 ARG FABRIC_INSTALLER
@@ -39,7 +39,7 @@ RUN wget --progress=bar:force --content-disposition -P mods "https://ci.lucko.me
 ## Hydrogen
 RUN wget --progress=bar:force --content-disposition -P mods "https://cdn.modrinth.com/data/AZomiSrC/versions/mc1.17.1-0.3.1/hydrogen-fabric-mc1.17.1-0.3.jar"
 
-FROM adoptopenjdk/openjdk16-openj9:debianslim-jre
+FROM ibm-semeru-runtimes:open-16-jre-focal
 # Env setup
 ENV PATH="/app/control:${PATH}"
 
