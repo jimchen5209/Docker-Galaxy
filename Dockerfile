@@ -11,7 +11,7 @@ ARG MINECRAFT_VERSION
 WORKDIR /app/minecraft
 COPY app /app
 
-RUN apt update && apt install wget ca-certificates
+RUN apt-get update && apt-get install -y wget ca-certificates
 # Download mcrcon
 RUN wget --progress=bar:force "https://github.com/OKTW-Network/mcrcon/releases/download/${MCRCON_VERSION}/${MCRCON_TAR_FILE}" -O - | tar xz -C /app/control/ mcrcon
 
@@ -43,7 +43,7 @@ FROM ibm-semeru-runtimes:open-16-jre-focal
 # Env setup
 ENV PATH="/app/control:${PATH}"
 
-RUN apt update && apt install ca-certificates
+RUN apt-get update && apt-get install -y ca-certificates
 
 # Copy server files
 COPY --from=builder /app/control /app/control
