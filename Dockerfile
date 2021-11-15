@@ -1,6 +1,6 @@
 ARG MCRCON_VERSION=v0.0.6
 ARG MCRCON_TAR_FILE=mcrcon-0.0.6-linux-x86-64.tar.gz
-ARG FABRIC_INSTALLER=0.7.4
+ARG FABRIC_INSTALLER=0.9.0
 ARG MINECRAFT_VERSION=1.17.1
 
 FROM ibm-semeru-runtimes:open-16-jre-focal as builder
