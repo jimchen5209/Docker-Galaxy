@@ -1,9 +1,9 @@
 ARG MCRCON_VERSION=v0.0.6
 ARG MCRCON_TAR_FILE=mcrcon-0.0.6-linux-x86-64.tar.gz
-ARG FABRIC_INSTALLER=0.9.0
-ARG MINECRAFT_VERSION=1.17.1
+ARG FABRIC_INSTALLER=0.10.0
+ARG MINECRAFT_VERSION=1.18
 
-FROM ibm-semeru-runtimes:open-16-jre-focal as builder
+FROM eclipse-temurin:17 as builder
 ARG MCRCON_VERSION
 ARG MCRCON_TAR_FILE
 ARG FABRIC_INSTALLER
@@ -25,23 +25,23 @@ RUN wget --progress=bar:force "https://maven.fabricmc.net/net/fabricmc/fabric-in
 ## LazyDFU
 RUN wget --progress=bar:force --content-disposition -P mods "https://cdn.modrinth.com/data/hvFnDODi/versions/0.1.2/lazydfu-0.1.2.jar"
 ## Krypton
-RUN wget --progress=bar:force --content-disposition -P mods "https://cdn.modrinth.com/data/fQEb0iXm/versions/0.1.4/krypton-0.1.4.jar"
+#RUN wget --progress=bar:force --content-disposition -P mods "https://cdn.modrinth.com/data/fQEb0iXm/versions/0.1.4/krypton-0.1.4.jar"
 ## Fabric proxy
-RUN wget --progress=bar:force --content-disposition -P mods "https://cdn.modrinth.com/data/8dI2tmqs/versions/v1.1.5/FabricProxy-Lite-1.1.5.jar"
+RUN wget --progress=bar:force --content-disposition -P mods "https://cdn.modrinth.com/data/8dI2tmqs/versions/v1.1.6/FabricProxy-Lite-1.1.6.jar"
 ## Starlight
-RUN wget --progress=bar:force --content-disposition -P mods "https://cdn.modrinth.com/data/H8CaAYZC/versions/Starlight%201.0.0%201.17.x/starlight-1.0.0+fabric.73f6d37.jar"
+#RUN wget --progress=bar:force --content-disposition -P mods "https://cdn.discordapp.com/attachments/802420410377437195/911798569764270081/starlight-1.0.0fabric.9f82e79.jar"
 ## FerriteCore
-RUN wget --progress=bar:force --content-disposition -P mods "https://cdn.modrinth.com/data/uXXizFIs/versions/3.1.0/ferritecore-3.1.0-fabric.jar"
+#RUN wget --progress=bar:force --content-disposition -P mods "https://cdn.modrinth.com/data/uXXizFIs/versions/3.1.0/ferritecore-3.1.0-fabric.jar"
 ## lithium
-RUN wget --progress=bar:force --content-disposition -P mods "https://cdn.modrinth.com/data/gvQqBUqZ/versions/mc1.17.1-0.7.4/lithium-fabric-mc1.17.1-0.7.4.jar"
+#RUN wget --progress=bar:force --content-disposition -P mods "https://cdn.discordapp.com/attachments/439314137584107532/913670538025648168/lithium-fabric-mc1.18-pre4-0.7.5-SNAPSHOT.jar"
 ## Fabric API
-RUN wget --progress=bar:force --content-disposition -P mods "https://cdn.modrinth.com/data/P7dR8mSH/versions/0.41.0+1.17/fabric-api-0.41.0+1.17.jar"
+RUN wget --progress=bar:force --content-disposition -P mods "https://cdn.modrinth.com/data/P7dR8mSH/versions/0.43.1+1.18/fabric-api-0.43.1+1.18.jar"
 ## Spark
 RUN wget --progress=bar:force --content-disposition -P mods "https://ci.lucko.me/job/spark/lastSuccessfulBuild/artifact/spark-fabric/build/libs/spark-fabric.jar"
 ## Hydrogen
-RUN wget --progress=bar:force --content-disposition -P mods "https://cdn.modrinth.com/data/AZomiSrC/versions/mc1.17.1-0.3.1/hydrogen-fabric-mc1.17.1-0.3.jar"
+#RUN wget --progress=bar:force --content-disposition -P mods "https://cdn.discordapp.com/attachments/439314137584107532/913671849924243456/hydrogen-fabric-mc1.18-rc1-0.3-SNAPSHOT.jar"
 
-FROM ibm-semeru-runtimes:open-16-jre-focal
+FROM eclipse-temurin:17
 # Env setup
 ENV PATH="/app/control:${PATH}"
 
@@ -58,4 +58,4 @@ COPY --chown=1000 mods/* /app/minecraft/mods/
 WORKDIR /app/minecraft
 USER 1000
 EXPOSE 25565
-CMD ["java", "-XX:MaxRAMPercentage=95", "-Xaggressive", "-Xalwaysclassgc","-XX:IdleTuningMinIdleWaitTime=1", "-Xjit:waitTimeToEnterDeepIdleMode=1000", "-Xgc:concurrentScavenge", "-Xdump:none", "-Xdump:console", "-jar", "fabric-server-launch.jar"]
+CMD ["java", "-XX:MaxRAMPercentage=80", "-XX:+UnlockExperimentalVMOptions", "-XX:+UseShenandoahGC", "-XX:ShenandoahGuaranteedGCInterval=30000", "-XX:ShenandoahUncommitDelay=5000", "-jar", "fabric-server-launch.jar"]
