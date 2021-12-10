@@ -1,7 +1,7 @@
 ARG MCRCON_VERSION=v0.0.6
 ARG MCRCON_TAR_FILE=mcrcon-0.0.6-linux-x86-64.tar.gz
 ARG FABRIC_INSTALLER=0.10.0
-ARG MINECRAFT_VERSION=1.18
+ARG MINECRAFT_VERSION=1.18.1
 
 FROM eclipse-temurin:17 as jre-build
 
@@ -39,21 +39,21 @@ RUN wget --progress=bar:force "https://maven.fabricmc.net/net/fabricmc/fabric-in
 ## LazyDFU
 RUN wget --progress=bar:force --content-disposition -P mods "https://cdn.modrinth.com/data/hvFnDODi/versions/0.1.2/lazydfu-0.1.2.jar"
 ## Krypton
-RUN wget --progress=bar:force --content-disposition -P mods "https://cdn.modrinth.com/data/fQEb0iXm/versions/0.1.5/krypton-0.1.5.jar"
+#RUN wget --progress=bar:force --content-disposition -P mods "https://cdn.modrinth.com/data/fQEb0iXm/versions/0.1.5/krypton-0.1.5.jar"
 ## Fabric proxy
 RUN wget --progress=bar:force --content-disposition -P mods "https://cdn.modrinth.com/data/8dI2tmqs/versions/v1.1.6/FabricProxy-Lite-1.1.6.jar"
 ## Starlight
-#RUN wget --progress=bar:force --content-disposition -P mods "https://cdn.discordapp.com/attachments/802420410377437195/911798569764270081/starlight-1.0.0fabric.9f82e79.jar"
+RUN wget --progress=bar:force --content-disposition -P mods "https://cdn.modrinth.com/data/H8CaAYZC/versions/Starlight%201.0.0%201.18.x/starlight-1.0.0+fabric.d0a3220.jar"
 ## FerriteCore
 #RUN wget --progress=bar:force --content-disposition -P mods "https://cdn.modrinth.com/data/uXXizFIs/versions/3.1.0/ferritecore-3.1.0-fabric.jar"
 ## lithium
-RUN wget --progress=bar:force --content-disposition -P mods "https://cdn.discordapp.com/attachments/361495932971515904/916694321296715826/lithium-fabric-mc1.18-0.7.6-SNAPSHOT.jar"
+#RUN wget --progress=bar:force --content-disposition -P mods "https://cdn.discordapp.com/attachments/361495932971515904/916694321296715826/lithium-fabric-mc1.18-0.7.6-SNAPSHOT.jar"
 ## Fabric API
 RUN wget --progress=bar:force --content-disposition -P mods "https://cdn.modrinth.com/data/P7dR8mSH/versions/0.44.0+1.18/fabric-api-0.44.0+1.18.jar"
 ## Spark
 RUN wget --progress=bar:force --content-disposition -P mods "https://ci.lucko.me/job/spark/lastSuccessfulBuild/artifact/spark-fabric/build/libs/spark-fabric.jar"
 ## Hydrogen
-RUN wget --progress=bar:force --content-disposition -P mods "https://cdn.discordapp.com/attachments/361495932971515904/916695488563130398/hydrogen-fabric-mc1.18-0.3-SNAPSHOT.jar"
+#RUN wget --progress=bar:force --content-disposition -P mods "https://cdn.discordapp.com/attachments/361495932971515904/916695488563130398/hydrogen-fabric-mc1.18-0.3-SNAPSHOT.jar"
 
 FROM debian:bullseye-slim
 ENV JAVA_HOME=/opt/java/openjdk
