@@ -58,4 +58,4 @@ COPY --chown=1000 mods/* /app/minecraft/mods/
 WORKDIR /app/minecraft
 USER 1000
 EXPOSE 25565
-CMD ["java", "-XX:MaxRAMPercentage=95", "-Xaggressive", "-Xalwaysclassgc","-XX:IdleTuningMinIdleWaitTime=1", "-Xjit:waitTimeToEnterDeepIdleMode=1000", "-Xgc:concurrentScavenge", "-Xdump:none", "-Xdump:console", "-jar", "fabric-server-launch.jar"]
+CMD ["java", "-XX:MaxRAMPercentage=80", "-Xaggressive", "-Xalwaysclassgc","-XX:IdleTuningMinIdleWaitTime=1", "-Xjit:waitTimeToEnterDeepIdleMode=1000", "-Xgc:concurrentScavenge", "-Xdump:none", "-Xdump:console", "-jar", "fabric-server-launch.jar"]
