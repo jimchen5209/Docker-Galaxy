@@ -1,9 +1,7 @@
-ARG MCRCON_VERSION=v0.0.6
-ARG MCRCON_TAR_FILE=mcrcon-0.0.6-linux-x86-64.tar.gz
 ARG FABRIC_INSTALLER=0.11.0
 ARG MINECRAFT_VERSION=1.19
 
-FROM ibm-semeru-runtimes:open-17-jre-focal as builder
+FROM eclipse-temurin:17-jre-alpine as builder
 ARG MCRCON_VERSION
 ARG MCRCON_TAR_FILE
 ARG FABRIC_INSTALLER
@@ -11,9 +9,9 @@ ARG MINECRAFT_VERSION
 WORKDIR /app/minecraft
 COPY app /app
 
-RUN apt-get update && apt-get install -y wget ca-certificates
+RUN apk add --no-cache wget ca-certificates
 # Download mcrcon
-RUN wget --progress=bar:force "https://github.com/OKTW-Network/mcrcon/releases/download/${MCRCON_VERSION}/${MCRCON_TAR_FILE}" -O - | tar xz -C /app/control/ mcrcon
+RUN wget --progress=bar:force "https://cdn.discordapp.com/attachments/439314137584107532/995321360425418852/mcrcon" -O /app/control/mcrcon && chmod +x /app/control/mcrcon
 
 # Download minecraft server and install fabric
 RUN wget --progress=bar:force "https://maven.fabricmc.net/net/fabricmc/fabric-installer/${FABRIC_INSTALLER}/fabric-installer-${FABRIC_INSTALLER}.jar" && \
@@ -39,11 +37,13 @@ RUN wget --progress=bar:force --content-disposition -P mods "https://cdn.modrint
 ## Spark
 RUN wget --progress=bar:force --content-disposition -P mods "https://ci.lucko.me/job/spark/322/artifact/spark-fabric/build/libs/spark-1.9.23-fabric.jar"
 
-FROM ibm-semeru-runtimes:open-17-jre-focal
+FROM eclipse-temurin:17-jre-alpine
+
 # Env setup
 ENV PATH="/app/control:${PATH}"
 
-RUN apt-get update && apt-get install -y ca-certificates
+RUN apk upgrade --no-cache
+RUN apk add --no-cache bash ca-certificates
 
 # Copy server files
 COPY --from=builder /app/control /app/control
@@ -56,4 +56,4 @@ COPY --chown=1000 mods/* /app/minecraft/mods/
 WORKDIR /app/minecraft
 USER 1000
 EXPOSE 25565
-CMD ["java", "-XX:MaxRAMPercentage=80", "-Xaggressive", "-Xalwaysclassgc","-XX:IdleTuningMinIdleWaitTime=1", "-Xjit:waitTimeToEnterDeepIdleMode=1000", "-Xgc:concurrentScavenge", "-Xdump:none", "-Xdump:console", "-jar", "fabric-server-launch.jar"]
+CMD ["java", "-XX:MaxRAMPercentage=75", "-XX:+UnlockExperimentalVMOptions", "-XX:+UseShenandoahGC", "-XX:ShenandoahGuaranteedGCInterval=30000", "-XX:ShenandoahUncommitDelay=15000", "-jar", "fabric-server-launch.jar"]
