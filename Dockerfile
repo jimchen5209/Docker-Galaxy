@@ -31,13 +31,13 @@ RUN wget --progress=bar:force --content-disposition -P mods "https://cdn.modrint
 ## Starlight
 RUN wget --progress=bar:force --content-disposition -P mods "https://cdn.modrinth.com/data/H8CaAYZC/versions/1.1.1+1.19/starlight-1.1.1%2Bfabric.ae22326.jar"
 ## lithium
-RUN wget --progress=bar:force --content-disposition -P mods "https://cdn.modrinth.com/data/gvQqBUqZ/versions/mc1.19-0.8.0/lithium-fabric-mc1.19-0.8.0.jar"
+RUN wget --progress=bar:force --content-disposition -P mods "https://cdn.modrinth.com/data/gvQqBUqZ/versions/mc1.19-0.8.1/lithium-fabric-mc1.19-0.8.1.jar"
 ## FerriteCore
 RUN wget --progress=bar:force --content-disposition -P mods "https://cdn.modrinth.com/data/uXXizFIs/versions/5.0.0-fabric/ferritecore-5.0.0-fabric.jar"
 ## Fabric API
-RUN wget --progress=bar:force --content-disposition -P mods "https://cdn.modrinth.com/data/P7dR8mSH/versions/0.56.3+1.19/fabric-api-0.56.3%2B1.19.jar"
+RUN wget --progress=bar:force --content-disposition -P mods "https://cdn.modrinth.com/data/P7dR8mSH/versions/0.57.0+1.19/fabric-api-0.57.0%2B1.19.jar"
 ## Spark
-RUN wget --progress=bar:force --content-disposition -P mods "https://ci.lucko.me/job/spark/318/artifact/spark-fabric/build/libs/spark-1.9.17-fabric.jar"
+RUN wget --progress=bar:force --content-disposition -P mods "https://ci.lucko.me/job/spark/322/artifact/spark-fabric/build/libs/spark-1.9.23-fabric.jar"
 
 FROM ibm-semeru-runtimes:open-17-jre-focal
 # Env setup
