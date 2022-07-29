@@ -1,3 +1,4 @@
+#syntax=docker/dockerfile:1
 ARG FABRIC_INSTALLER=0.11.0
 ARG MINECRAFT_VERSION=1.19
 
@@ -7,7 +8,7 @@ ARG MCRCON_TAR_FILE
 ARG FABRIC_INSTALLER
 ARG MINECRAFT_VERSION
 WORKDIR /app/minecraft
-COPY app /app
+COPY --link app /app
 
 RUN apk add --no-cache wget ca-certificates
 # Download mcrcon
@@ -46,11 +47,11 @@ RUN apk upgrade --no-cache
 RUN apk add --no-cache bash ca-certificates
 
 # Copy server files
-COPY --from=builder /app/control /app/control
-COPY --from=builder --chown=1000 /app/minecraft /app/minecraft
+COPY --from=builder --link /app/control /app/control
+COPY --from=builder --link --chown=1000 /app/minecraft /app/minecraft
 
 # Copy mods
-COPY --chown=1000 mods/* /app/minecraft/mods/
+COPY --link --chown=1000 mods/* /app/minecraft/mods/
 
 # Run Server
 WORKDIR /app/minecraft
