@@ -7,10 +7,6 @@ RUN apt-get update && apt-get install -y wget
 # Download mcrcon
 RUN wget --progress=bar:force "https://cdn.discordapp.com/attachments/439314137584107532/1084748286444974130/mcrcon" -O /app/control/mcrcon && chmod +x /app/control/mcrcon
 
-# Download minecraft server and install fabric
-RUN wget --progress=bar:force "https://meta.fabricmc.net/v2/versions/loader/1.19.4/0.14.17/0.11.2/server/jar" -O fabric-server-launch.jar && \
-    java -jar fabric-server-launch.jar --initSettings \
-
 # Download mods
 ## LazyDFU
 RUN wget --progress=bar:force --content-disposition -P mods "https://cdn.modrinth.com/data/hvFnDODi/versions/0.1.3/lazydfu-0.1.3.jar"
@@ -28,6 +24,10 @@ RUN wget --progress=bar:force --content-disposition -P mods "https://cdn.modrint
 RUN wget --progress=bar:force --content-disposition -P mods "https://cdn.modrinth.com/data/P7dR8mSH/versions/67xsScMW/fabric-api-0.75.3%2B1.19.4.jar"
 ## Spark
 RUN wget --progress=bar:force --content-disposition -P mods "https://ci.lucko.me/job/spark/371/artifact/spark-fabric/build/libs/spark-1.10.33-fabric.jar"
+
+# Download minecraft server and install fabric
+RUN wget --progress=bar:force "https://meta.fabricmc.net/v2/versions/loader/1.19.4/0.14.17/0.11.2/server/jar" -O fabric-server-launch.jar && \
+    java -jar fabric-server-launch.jar --initSettings
 
 FROM eclipse-temurin:19-jre-jammy
 
