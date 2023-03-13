@@ -41,6 +41,8 @@ RUN apt-get update && apt-get install -y libstdc++6 libjemalloc2
 COPY --from=builder --link /app/control /app/control
 COPY --from=builder --link --chown=1000 /app/minecraft /app/minecraft
 
+# Copy config
+COPY --link --chown=1000 config /app/minecraft/config
 # Copy mods
 COPY --link --chown=1000 mods/* /app/minecraft/mods/
 
