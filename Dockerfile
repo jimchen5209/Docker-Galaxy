@@ -44,7 +44,7 @@ FROM eclipse-temurin:17-jre-alpine
 ENV PATH="/app/control:${PATH}"
 
 RUN apk upgrade --no-cache
-RUN apk add --no-cache bash ca-certificates
+RUN apk add --no-cache bash ca-certificates libstdc++
 
 # Copy server files
 COPY --from=builder --link /app/control /app/control
