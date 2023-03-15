@@ -11,7 +11,7 @@ RUN wget --progress=bar:force "https://cdn.discordapp.com/attachments/4393141375
 ## LazyDFU
 RUN wget --progress=bar:force --content-disposition -P mods "https://cdn.modrinth.com/data/hvFnDODi/versions/0.1.3/lazydfu-0.1.3.jar"
 ## Krypton
-RUN wget --progress=bar:force --content-disposition -P mods "https://cdn.discordapp.com/attachments/276631300390125579/1084665957840080958/krypton-0.2.2.jar"
+RUN wget --progress=bar:force --content-disposition -P mods "https://cdn.discordapp.com/attachments/276631300390125579/1085465829019234324/krypton-0.2.2.jar"
 ## Fabric proxy
 RUN wget --progress=bar:force --content-disposition -P mods "https://cdn.modrinth.com/data/8dI2tmqs/versions/rCwKd1CC/FabricProxy-Lite-2.4.0.jar"
 ## Starlight
