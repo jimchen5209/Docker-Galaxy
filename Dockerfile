@@ -11,22 +11,22 @@ RUN wget --progress=bar:force "https://cdn.discordapp.com/attachments/4393141375
 ## LazyDFU
 RUN wget --progress=bar:force --content-disposition -P mods "https://cdn.modrinth.com/data/hvFnDODi/versions/0.1.3/lazydfu-0.1.3.jar"
 ## Krypton
-RUN wget --progress=bar:force --content-disposition -P mods "https://cdn.discordapp.com/attachments/276631300390125579/1107561656915083264/krypton-0.2.2.jar"
+RUN wget --progress=bar:force --content-disposition -P mods "https://cdn.modrinth.com/data/fQEb0iXm/versions/jiDwS0W1/krypton-0.2.3.jar"
 ## Fabric proxy
-RUN wget --progress=bar:force --content-disposition -P mods "https://cdn.modrinth.com/data/8dI2tmqs/versions/rCwKd1CC/FabricProxy-Lite-2.4.0.jar"
+RUN wget --progress=bar:force --content-disposition -P mods "https://cdn.modrinth.com/data/8dI2tmqs/versions/XJmDAnj5/FabricProxy-Lite-2.6.0.jar"
 ## Starlight
-RUN wget --progress=bar:force --content-disposition -P mods "https://cdn.modrinth.com/data/H8CaAYZC/versions/1.1.1+1.19/starlight-1.1.1%2Bfabric.ae22326.jar"
+RUN wget --progress=bar:force --content-disposition -P mods "https://cdn.modrinth.com/data/H8CaAYZC/versions/XGIsoVGT/starlight-1.1.2%2Bfabric.dbc156f.jar"
 ## lithium
-RUN wget --progress=bar:force --content-disposition -P mods "https://cdn.modrinth.com/data/gvQqBUqZ/versions/14hWYkog/lithium-fabric-mc1.19.4-0.11.1.jar"
+RUN wget --progress=bar:force --content-disposition -P mods "https://cdn.modrinth.com/data/gvQqBUqZ/versions/ZSNsJrPI/lithium-fabric-mc1.20.1-0.11.2.jar"
 ## FerriteCore
-RUN wget --progress=bar:force --content-disposition -P mods "https://cdn.modrinth.com/data/uXXizFIs/versions/RbR7EG8T/ferritecore-5.2.0-fabric.jar"
+RUN wget --progress=bar:force --content-disposition -P mods "https://cdn.modrinth.com/data/uXXizFIs/versions/FCnCG6PS/ferritecore-6.0.0-fabric.jar"
 ## Fabric API
-RUN wget --progress=bar:force --content-disposition -P mods "https://cdn.modrinth.com/data/P7dR8mSH/versions/s5UrEfIY/fabric-api-0.80.0%2B1.19.4.jar"
+RUN wget --progress=bar:force --content-disposition -P mods "https://cdn.modrinth.com/data/P7dR8mSH/versions/pYtlDijL/fabric-api-0.88.1%2B1.20.1.jar"
 ## Spark
-RUN wget --progress=bar:force --content-disposition -P mods "https://ci.lucko.me/job/spark/376/artifact/spark-fabric/build/libs/spark-1.10.38-fabric.jar"
+RUN wget --progress=bar:force --content-disposition -P mods "https://ci.lucko.me/job/spark/394/artifact/spark-fabric/build/libs/spark-1.10.53-fabric.jar"
 
 # Download minecraft server and install fabric
-RUN wget --progress=bar:force "https://meta.fabricmc.net/v2/versions/loader/1.19.4/0.14.19/0.11.2/server/jar" -O fabric-server-launch.jar && \
+RUN wget --progress=bar:force "https://meta.fabricmc.net/v2/versions/loader/1.20.1/0.14.22/0.11.2/server/jar" -O fabric-server-launch.jar && \
     java -jar fabric-server-launch.jar --initSettings
 
 FROM eclipse-temurin:20-jre-jammy
