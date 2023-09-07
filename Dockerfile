@@ -20,10 +20,6 @@ RUN wget --progress=bar:force --content-disposition -P mods "https://cdn.modrint
 RUN wget --progress=bar:force --content-disposition -P mods "https://cdn.modrinth.com/data/gvQqBUqZ/versions/ZSNsJrPI/lithium-fabric-mc1.20.1-0.11.2.jar"
 ## FerriteCore
 RUN wget --progress=bar:force --content-disposition -P mods "https://cdn.modrinth.com/data/uXXizFIs/versions/FCnCG6PS/ferritecore-6.0.0-fabric.jar"
-## Alternate Current
-RUN wget --progress=bar:force --content-disposition -P mods "https://cdn.modrinth.com/data/r0v8vy1s/versions/kC6SY4Zp/alternate_current-mc1.20-1.7.0.jar"
-## ModernFix
-RUN wget --progress=bar:force --content-disposition -P mods "https://cdn.modrinth.com/data/nmDcB62a/versions/zny6etkd/modernfix-fabric-5.7.2%2Bmc1.20.1.jar"
 ## Fabric API
 RUN wget --progress=bar:force --content-disposition -P mods "https://cdn.modrinth.com/data/P7dR8mSH/versions/pYtlDijL/fabric-api-0.88.1%2B1.20.1.jar"
 ## Spark
