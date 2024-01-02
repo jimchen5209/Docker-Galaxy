@@ -1,5 +1,5 @@
 #syntax=docker/dockerfile:1
-FROM eclipse-temurin:20-jre-jammy as builder
+FROM eclipse-temurin:21-jre-jammy as builder
 WORKDIR /app/minecraft
 COPY --link app /app
 
@@ -29,7 +29,7 @@ RUN wget --progress=bar:force --content-disposition -P mods "https://ci.lucko.me
 RUN wget --progress=bar:force "https://meta.fabricmc.net/v2/versions/loader/1.20.4/0.15.3/0.11.2/server/jar" -O fabric-server-launch.jar && \
     java -jar fabric-server-launch.jar --initSettings
 
-FROM eclipse-temurin:20-jre-jammy
+FROM eclipse-temurin:21-jre-jammy
 
 # Env setup
 ENV PATH="/app/control:${PATH}"
