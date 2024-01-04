@@ -41,6 +41,8 @@ RUN apt-get update && apt-get install -y libstdc++6 libjemalloc2
 COPY --from=builder --link /app/control /app/control
 COPY --from=builder --link --chown=1000 /app/minecraft /app/minecraft
 
+# Download datapack
+ADD https://github.com/OKTW-Network/Easy-Recipe/releases/download/v1.0.0/Easy-Recipe.zip /app/minecraft/datapacks/
 # Copy config
 COPY --link --chown=1000 config /app/minecraft/config
 # Copy mods
