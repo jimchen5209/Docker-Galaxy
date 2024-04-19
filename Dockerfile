@@ -5,7 +5,7 @@ COPY --link app /app
 
 RUN apt-get update && apt-get install -y wget
 # Download mcrcon
-RUN wget --progress=bar:force "https://cdn.discordapp.com/attachments/439314137584107532/1084748286444974130/mcrcon" -O /app/control/mcrcon && chmod +x /app/control/mcrcon
+RUN wget --progress=bar:force "https://github.com/OKTW-Network/mcrcon/releases/download/v0.0.6/mcrcon" -O /app/control/mcrcon && chmod +x /app/control/mcrcon
 
 # Download mods
 ## LazyDFU
